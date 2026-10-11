@@ -179,8 +179,27 @@ npm run dev
 ```text
 Frontend: http://localhost:5173
 Admin:    http://localhost:5174
-Backend:  http://localhost:5000
+Backend:  http://localhost:4000
 ```
+
+### Deploy the Backend to Render
+
+The repository includes a Render Blueprint in `render.yaml`. Push the project
+to GitHub, then in Render choose **New + → Blueprint** and select this
+repository. Set the prompted environment variables in Render's dashboard:
+
+- `MONGODB_URI`: a persistent MongoDB Atlas connection string. Production
+  intentionally fails to start rather than using an ephemeral in-memory DB.
+- `JWT_SECRET`: a long, unique random secret.
+- `ADMIN_EMAIL` and `ADMIN_PASSWORD`: production admin credentials.
+- `CLOUDINARY_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_SECRET_KEY`: your
+  Cloudinary credentials.
+- `RAZORPAY_KEY_ID` and `RAZORPAY_KEY_SECRET`: use rotated live keys for
+  production payments, or test keys for test-mode deployment.
+
+After Render deploys, copy the service URL and set it as
+`VITE_BACKEND_URL` in both `frontend` and `admin` hosting environments, then
+redeploy those Vite apps. Do not put backend secrets in either frontend.
 
 ### 📁 Folder Structure
 

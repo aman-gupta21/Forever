@@ -14,6 +14,11 @@ const connectDatabase = async () => {
     console.log("MongoDB connected successfully");
     return;
   } catch (error) {
+    if (process.env.NODE_ENV === "production") {
+      console.error("MongoDB connection error in production:", error.message);
+      process.exit(1);
+    }
+
     console.warn("Primary MongoDB connection failed, falling back to local in-memory MongoDB:", error.message);
   }
 
