@@ -92,7 +92,7 @@ A modern **full-stack e-commerce clothing website** built with **React**, **Node
 ## ⚙️ Installation & Setup
 
 ### Prerequisites
-- Node.js (v14 or higher)
+- Node.js (v18.11 or higher)
 - MongoDB
 - Cloudinary Account
 
