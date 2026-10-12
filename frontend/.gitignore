@@ -9,6 +9,7 @@ lerna-debug.log*
 
 # Environment files
 .env
+!.env.production
 
 node_modules
 dist
